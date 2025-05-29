@@ -1,43 +1,378 @@
-/* src/App.css */
+/* Reset some basics */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body, html, #root, .app {
+  height: 100%;
+  background-color: #111827; /* Dark background */
+  color: #e5e7eb; /* Light text */
+}
+
+/* Main app container */
 .app {
-    font-family: sans-serif;
-    padding: 1rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 2rem;
+}
+
+/* Header nav */
+nav {
+  margin-bottom: 6rem;
+  text-align: center;
+  padding: 0 1rem; /* horizontal padding on small screens */
+}
+
+nav h1 {
+  font-size: 4.5rem;
+  margin-bottom: 1rem;
+  color: red;
+  font-weight: 900;
+  text-shadow: 0 0 10px #3b82f6;
+  word-break: break-word; /* prevent overflow */
+}
+
+/* SCP Buttons container - horizontal with wrapping and gap */
+.scp-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  padding: 0 1rem;
+  overflow-x: auto; /* allow horizontal scroll on very narrow screens */
+}
+
+/* SCP Buttons style */
+.scp-btn {
+  background: linear-gradient(145deg, #2563eb, #1e3a8a);
+  color: #fff;
+  border: none;
+  padding: 0.65rem 1.3rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+  transition: all 0.25s ease;
+  user-select: none;
+  white-space: nowrap; /* prevent text wrapping */
+  flex-shrink: 0; /* prevent shrinking */
+}
+
+.scp-btn:hover {
+  background: linear-gradient(145deg, #1e40af, #1e3a8a);
+  transform: translateY(-2px);
+}
+
+.scp-btn:active {
+  transform: scale(0.97);
+}
+
+/* Admin button style */
+.admin-btn {
+  background: linear-gradient(145deg, #10b981, #047857);
+  color: white;
+  border: none;
+  padding: 0.65rem 1.3rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+  user-select: none;
+  margin-left: 1rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.admin-btn:hover {
+  background: linear-gradient(145deg, #047857, #065f46);
+  transform: translateY(-2px);
+}
+
+.admin-btn:active {
+  transform: scale(0.97);
+}
+
+/* Home background placeholder */
+.home-background {
+  height: 800px;
+  background: url('C:\\Users\\30081050\\Kunal-crud\\src\\images\\scp-logo.png.jpg') no-repeat center;
+  background-size: 800px 800px; /* fixed bigger size */
+  margin-top: 2rem;
+  opacity: 0.1;
+  max-width: 100%;
+}
+
+/* Detail view */
+.detail {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 1rem;
+  background: #1f2937;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+}
+
+.detail h2 {
+  font-size: 3.5rem;
+  margin-bottom: 0.25rem;
+  color: red;
+  word-break: break-word;
+}
+
+.detail h4 {
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: #a5b4fc;
+}
+
+.detail img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 10px #2563eb;
+}
+
+.detail p {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
+  color: #d1d5db;
+  word-wrap: break-word;
+}
+
+/* Navigation buttons under detail */
+.navigation-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.nav-btn {
+  background: linear-gradient(145deg, #2563eb, #1e3a8a);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+  transition: all 0.25s ease;
+  user-select: none;
+  min-width: 90px;
+  flex-shrink: 0;
+}
+
+.nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.back-btn {
+  background: linear-gradient(145deg, #10b981, #047857);
+}
+
+.nav-btn:hover:not(:disabled) {
+  background: linear-gradient(145deg, #1e40af, #1e3a8a);
+  transform: translateY(-2px);
+}
+
+.nav-btn:active {
+  transform: scale(0.97);
+}
+
+/* Admin panel */
+.admin {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+  background: #1f2937;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+  color: #e5e7eb;
+}
+
+.admin h2 {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  color: #3b82f6;
+}
+
+.admin table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+  display: block;
+}
+
+.admin th,
+.admin td {
+  border: 1px solid #374151;
+  padding: 0.75rem;
+  text-align: left;
+  vertical-align: middle;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+.admin th {
+  background-color: #2563eb;
+  color: white;
+}
+
+.admin td img {
+  border-radius: 6px;
+  box-shadow: 0 0 6px #2563eb;
+  max-width: 50px;
+  height: auto;
+}
+
+.admin button {
+  background: #2563eb;
+  border: none;
+  color: white;
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-right: 0.4rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  user-select: none;
+}
+
+.admin button:hover {
+  background: #1e40af;
+}
+
+.admin button:active {
+  transform: scale(0.95);
+}
+
+/* Form in admin */
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+  padding: 0 1rem;
+}
+
+.form input {
+  flex: 1 1 200px;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid #4b5563;
+  background-color: #374151;
+  color: #e5e7eb;
+  font-size: 1rem;
+  outline-offset: 2px;
+  min-width: 0;
+  word-break: break-word;
+}
+
+.form input::placeholder {
+  color: #9ca3af;
+}
+
+.form button {
+  background: linear-gradient(145deg, #10b981, #047857);
+  border: none;
+  color: white;
+  padding: 0.65rem 1.25rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+  transition: all 0.25s ease;
+  user-select: none;
+  min-width: 120px;
+  flex-shrink: 0;
+}
+
+.form button:hover {
+  background: linear-gradient(145deg, #047857, #065f46);
+  transform: translateY(-2px);
+}
+
+.form button:active {
+  transform: scale(0.97);
+}
+
+/* Footer */
+.footer {
+  margin-top: auto;
+  padding: 1rem 0;
+  text-align: center;
+  font-size: 1.5rem;
+  color: darkgray;
+  background-color: #1e3a8a;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  nav h1 {
+    font-size: 3.5rem; /* smaller heading for mobiles */
   }
-  nav {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 1rem;
+
+  .scp-buttons {
+    justify-content: flex-start;
+    gap: 0.3rem;
+    padding: 0 0.5rem;
+    overflow-x: auto;
   }
-  button {
+
+  .scp-btn, .admin-btn {
+    font-size: 0.9rem;
     padding: 0.5rem 1rem;
-    margin-bottom: 0.5rem;
-    border: none;
-    background: #0077cc;
-    color: white;
-    border-radius: 6px;
-    cursor: pointer;
   }
-  button:hover {
-    background: #005fa3;
+
+  .form {
+    flex-direction: column;
+    padding: 0 0.5rem;
   }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1rem;
-  }
-  th, td {
-    border: 1px solid #ccc;
-    padding: 0.5rem;
-  }
+
   .form input {
-    display: block;
-    margin: 0.5rem 0;
-    padding: 0.5rem;
-    width: 100%;
-    max-width: 300px;
+    flex: 1 1 100%;
   }
-  img {
-    max-width: 50%;
-    height: auto;
+
+  .admin table,
+  .admin th,
+  .admin td {
+    font-size: 0.85rem;
   }
-  
+
+  .nav-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    min-width: 70px;
+  }
+
+  .detail h2 {
+    font-size: 2.5rem;
+  }
+
+  .detail h4 {
+    font-size: 1.1rem;
+  }
+
+  .detail p {
+    font-size: 1rem;
+  }
+
+  .home-background {
+    height: 400px;
+    background-size: contain;
+  }
+}
